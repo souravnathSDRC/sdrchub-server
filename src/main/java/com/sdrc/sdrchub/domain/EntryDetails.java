@@ -12,22 +12,54 @@ import javax.persistence.Id;
  * @author Sourav Keshari Nath
  */
 @Entity
-public class sopDetails implements Serializable {
+public class EntryDetails implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "sop_id")
-	private Integer sopId;
+	@Column(name = "id")
+	private Integer id;
 	
+	@Column(name = "module_id")
+	private Integer moduleId;
+	
+	@Column(name = "platform_id")
+	private Integer platformId;
+	
+	public Integer getModuleId() {
+		return moduleId;
+	}
+
+	public void setModuleId(Integer moduleId) {
+		this.moduleId = moduleId;
+	}
+
+	public Integer getPlatformId() {
+		return platformId;
+	}
+
+	public void setPlatformId(Integer platformId) {
+		this.platformId = platformId;
+	}
+
 	@Column(name = "subject")
 	private String subject;
 	
 	@Column(name = "comment")
 	private String comment;
 	
+	@Column(name = "tags")
+	private String tags;
+	
 	@Column(name = "author")
 	private String author;
+	
+	@Column(name = "reference_links")
+	private String referenceLinks;
+
+	@Column(name = "video_links")
+	private String videoLinks;
+	
 
 	@Column(name = "created_date")
 	private Timestamp createdDate;
@@ -38,12 +70,40 @@ public class sopDetails implements Serializable {
 	@Column(name = "is_live")
 	private boolean isLive;
 	
-	public Integer getSopId() {
-		return sopId;
+	
+
+	public String getVideoLinks() {
+		return videoLinks;
 	}
 
-	public void setSopId(Integer sopId) {
-		this.sopId = sopId;
+	public void setVideoLinks(String videoLinks) {
+		this.videoLinks = videoLinks;
+	}
+
+	
+
+	public String getTags() {
+		return tags;
+	}
+
+	public void setTags(String tags) {
+		this.tags = tags;
+	}
+
+	public String getReferenceLinks() {
+		return referenceLinks;
+	}
+
+	public void setReferenceLinks(String referenceLinks) {
+		this.referenceLinks = referenceLinks;
+	}
+	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getSubject() {
