@@ -8,5 +8,6 @@ import com.sdrc.sdrchub.domain.TypeDetails;
 public interface DataEntryService {
 
 	String saveData(EntryDetails entryData) throws Exception;
+	String uploadFiles(EntryDetails entryDetails, Integer referenceId) throws Exception;
 	List<TypeDetails> getModulesAndPlatforms() throws Exception;
 }

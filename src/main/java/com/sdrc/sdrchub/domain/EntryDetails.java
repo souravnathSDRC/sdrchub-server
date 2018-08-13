@@ -11,6 +11,10 @@ import javax.persistence.Id;
 /**
  * @author Sourav Keshari Nath
  */
+import javax.persistence.Transient;
+
+import com.sdrc.sdrchub.models.FileModel;
+
 @Entity
 public class EntryDetails implements Serializable {
 
@@ -25,22 +29,6 @@ public class EntryDetails implements Serializable {
 	
 	@Column(name = "platform_id")
 	private Integer platformId;
-	
-	public Integer getModuleId() {
-		return moduleId;
-	}
-
-	public void setModuleId(Integer moduleId) {
-		this.moduleId = moduleId;
-	}
-
-	public Integer getPlatformId() {
-		return platformId;
-	}
-
-	public void setPlatformId(Integer platformId) {
-		this.platformId = platformId;
-	}
 
 	@Column(name = "subject")
 	private String subject;
@@ -60,6 +48,9 @@ public class EntryDetails implements Serializable {
 	@Column(name = "video_links")
 	private String videoLinks;
 	
+	@Column(name = "attached_document_path")
+	private String attachedDocumentPath;
+
 
 	@Column(name = "created_date")
 	private Timestamp createdDate;
@@ -70,7 +61,40 @@ public class EntryDetails implements Serializable {
 	@Column(name = "is_live")
 	private boolean isLive;
 	
+	@Transient
+	private FileModel documents;
 	
+	@Transient
+	private FileModel moduleName;
+	
+	@Transient
+	private FileModel platformName;
+	
+	
+
+	public FileModel getDocuments() {
+		return documents;
+	}
+
+	public void setDocuments(FileModel documents) {
+		this.documents = documents;
+	}
+
+	public FileModel getModuleName() {
+		return moduleName;
+	}
+
+	public void setModuleName(FileModel moduleName) {
+		this.moduleName = moduleName;
+	}
+
+	public FileModel getPlatformName() {
+		return platformName;
+	}
+
+	public void setPlatformName(FileModel platformName) {
+		this.platformName = platformName;
+	}
 
 	public String getVideoLinks() {
 		return videoLinks;
@@ -80,7 +104,21 @@ public class EntryDetails implements Serializable {
 		this.videoLinks = videoLinks;
 	}
 
-	
+	public Integer getModuleId() {
+		return moduleId;
+	}
+
+	public void setModuleId(Integer moduleId) {
+		this.moduleId = moduleId;
+	}
+
+	public Integer getPlatformId() {
+		return platformId;
+	}
+
+	public void setPlatformId(Integer platformId) {
+		this.platformId = platformId;
+	}
 
 	public String getTags() {
 		return tags;
@@ -152,6 +190,14 @@ public class EntryDetails implements Serializable {
 
 	public void setLive(boolean isLive) {
 		this.isLive = isLive;
+	}
+	
+	public String getAttachedDocumentPath() {
+		return attachedDocumentPath;
+	}
+
+	public void setAttachedDocumentPath(String attachedDocumentPath) {
+		this.attachedDocumentPath = attachedDocumentPath;
 	}
 	
 }

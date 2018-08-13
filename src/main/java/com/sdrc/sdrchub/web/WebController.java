@@ -3,6 +3,7 @@ package com.sdrc.sdrchub.web;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sdrc.sdrchub.domain.EntryDetails;
 import com.sdrc.sdrchub.domain.TypeDetails;
-import com.sdrc.sdrchub.models.ViewDataModel;
+import com.sdrc.sdrchub.models.UserModel;
 import com.sdrc.sdrchub.service.DataEntryService;
 import com.sdrc.sdrchub.service.ViewDataService;
 
@@ -25,6 +26,12 @@ public class WebController {
 	
 	@Autowired
 	private DataEntryService dataEntryService;
+	
+	
+	@RequestMapping("/login")
+	public UserModel login() {
+		return (UserModel) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	}
 	
 	@RequestMapping("/getModulesPlatforms")
 	public List<TypeDetails> getModulesPlatforms() throws Exception {

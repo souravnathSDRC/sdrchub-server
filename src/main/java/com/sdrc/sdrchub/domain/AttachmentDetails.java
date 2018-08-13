@@ -19,9 +19,6 @@ public class AttachmentDetails implements Serializable {
 	@Id
 	@Column(name = "id_pk")
 	private Integer id;
-
-	@Column(name = "type_id_fk")
-	private Integer typeId;
 	
 	@Column(name = "ref_entry_id_fk")
 	private Integer referenceEntryId;
@@ -32,6 +29,54 @@ public class AttachmentDetails implements Serializable {
 	@Column(name = "updated_date")
 	private Timestamp updatedDate;
 	
+	@Column(name = "file_path")
+	private String filePath;
+	
+	@Column(name = "doc_name")
+	private String documentName;
+	
+	@Column(name = "is_deleted")
+	private boolean isDeleted;
+	
+	@Column(name = "is_attached")
+	private boolean isAttached;
+	
+	
+	
+	
+
+	public boolean isDeleted() {
+		return isDeleted;
+	}
+
+	public void setDeleted(boolean isDeleted) {
+		this.isDeleted = isDeleted;
+	}
+
+	public boolean isAttached() {
+		return isAttached;
+	}
+
+	public void setAttached(boolean isAttached) {
+		this.isAttached = isAttached;
+	}
+
+	public String getDocumentName() {
+		return documentName;
+	}
+
+	public void setDocumentName(String documentName) {
+		this.documentName = documentName;
+	}
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
 	public Timestamp getCreatedDate() {
 		return createdDate;
 	}
@@ -46,14 +91,6 @@ public class AttachmentDetails implements Serializable {
 
 	public void setUpdatedDate(Timestamp updatedDate) {
 		this.updatedDate = updatedDate;
-	}
-
-	public Integer getTypeId() {
-		return typeId;
-	}
-
-	public void setTypeId(Integer typeId) {
-		this.typeId = typeId;
 	}
 
 	public Integer getReferenceEntryId() {
